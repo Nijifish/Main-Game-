@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://lcev2thmbh4b"]
+
+[ext_resource type="Script" path="res://Scenes/Levels/level_1.gd" id="1_cslg6"]
+[ext_resource type="PackedScene" uid="uid://did7gp2k06t0v" path="res://Scenes/Characters/Player/protaganist.tscn" id="2_73u6f"]
+[ext_resource type="PackedScene" uid="uid://d4egelrdhirwv" path="res://Scenes/Test Scenes/platform test.tscn" id="2_qwmjg"]
+[ext_resource type="PackedScene" uid="uid://bjutr20wq8mgg" path="res://Scenes/Test Scenes/wall test.tscn" id="4_arl7d"]
+
+[node name="Level 1" type="Node2D"]
+script = ExtResource("1_cslg6")
+
+[node name="Protaganist" parent="." instance=ExtResource("2_73u6f")]
+position = Vector2(1320, 568)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_qwmjg")]
+position = Vector2(928, 736)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("2_qwmjg")]
+position = Vector2(1408, 688)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("2_qwmjg")]
+position = Vector2(448, 800)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("2_qwmjg")]
+position = Vector2(1952, 4096)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("4_arl7d")]
+position = Vector2(1976, 408)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("4_arl7d")]
+position = Vector2(1144, 144)
