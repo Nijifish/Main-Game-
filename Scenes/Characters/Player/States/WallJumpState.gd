@@ -4,14 +4,14 @@ func Enter():
 	Player.Sprite.play("JUMP_ANIMATION")
 	Player.GRAVITY = 6000
 	Player.TIME_ELAPSED = 0
-	Player.MOVE_SPEED = 100
+	Player.MOVE_ACCELARATION = 100
 	if Player.left_wall():
 		Player.velocity.x = 1000
 	elif Player.right_wall():
 		Player.velocity.x = -1000
 
 func Exit():	
-	Player.MOVE_SPEED = 500
+	Player.MOVE_ACCELARATION = 300
 
 func Update(_delta: float):
 	Player.TIME_ELAPSED += 1.25*_delta

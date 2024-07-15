@@ -1,7 +1,7 @@
 extends State
 
 func Enter():
-	Player.velocity.y = -Player.INITIAL_Y_VELOCITY/5
+	Player.velocity.y = -Player.INITIAL_Y_VELOCITY/3
 
 func PhysicsUpdate(_delta: float):
 	if Player.is_on_floor():

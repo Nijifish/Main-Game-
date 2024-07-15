@@ -8,6 +8,7 @@ extends CharacterBody2D
 
 # Movement Parameters
 var MOVE_SPEED : float = 500
+var MOVE_ACCELARATION : float = 300
 var DIRECTION : Vector2 = Vector2.ZERO
 var GRAVITY : float = 5000
 var PEAK_HEIGHT : float = 300.0
@@ -17,13 +18,11 @@ var INITIAL_Y_VELOCITY : float = -(2*PEAK_HEIGHT)/TIME_FOR_PEAK_HEIGHT
 
 func _physics_process(_delta):
 	DIRECTION = Input.get_vector("left", "right", "up", "down")
-	print(DIRECTION)
-	if DIRECTION == Vector2.RIGHT:
-		velocity.x = move_toward(velocity.x, 500, MOVE_SPEED)
-	elif DIRECTION == Vector2.LEFT:
-		velocity.x = move_toward(velocity.x, -500, MOVE_SPEED)
-	else:
-		velocity.x = move_toward(velocity.x, 0, MOVE_SPEED)
+	print(DIRECTION.x)
+	velocity.x = move_toward(velocity.x, DIRECTION.x * MOVE_SPEED, MOVE_ACCELARATION)
+	#if DIRECTION.x:
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, MOVE_SPEED)
 
 	move_and_slide()
 	flip_direction()
