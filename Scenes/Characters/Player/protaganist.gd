@@ -18,19 +18,10 @@ var INITIAL_Y_VELOCITY : float = -(2*PEAK_HEIGHT)/TIME_FOR_PEAK_HEIGHT
 
 func _physics_process(_delta):
 	DIRECTION = Input.get_vector("left", "right", "up", "down")
-	print(DIRECTION.x)
 	velocity.x = move_toward(velocity.x, DIRECTION.x * MOVE_SPEED, MOVE_ACCELARATION)
-	#if DIRECTION.x:
-	#else:
-		#velocity.x = move_toward(velocity.x, 0, MOVE_SPEED)
 
 	move_and_slide()
 	flip_direction()
-	
-	#for i in get_slide_collision_count():
-		#var collision = get_slide_collision(i)
-		#print("I collided with ", collision.get_normal())
-		#print(position.x)
 	
 func flip_direction():
 	if DIRECTION.x > 0:

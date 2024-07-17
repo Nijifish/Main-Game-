@@ -19,7 +19,7 @@ func PhysicsUpdate(_delta: float):
 	elif Player.TIME_ELAPSED >= Player.TIME_FOR_PEAK_HEIGHT or Player.is_on_ceiling():
 		print("Transitioning from jump to freefall")
 		Transitioned.emit(self, "FreefallState")
-	elif Player.is_on_wall() and Player.TIME_ELAPSED >= Player.TIME_FOR_PEAK_HEIGHT/2:
+	elif Player.is_on_wall() and Player.TIME_ELAPSED >= Player.TIME_FOR_PEAK_HEIGHT/2 and (Input.is_action_pressed("left") or Input.is_action_pressed("right")):
 		print("Transitioning from jump to wallslide")
 		Transitioned.emit(self, "WallSlideState")
 	

@@ -1,7 +1,7 @@
 extends State
 
 func Enter():
-	Player.velocity.y = -Player.INITIAL_Y_VELOCITY/3
+	Player.velocity.y = -Player.INITIAL_Y_VELOCITY/5
 
 func PhysicsUpdate(_delta: float):
 	if Player.is_on_floor():
@@ -10,6 +10,7 @@ func PhysicsUpdate(_delta: float):
 	elif Input.is_action_just_pressed("jump"):
 		print("Transitioning from wallslide to walljump")		
 		Transitioned.emit(self, "WallJumpState")
-	elif not Player.is_on_wall():
+	elif (not Player.is_on_wall()) or Input.is_action_just_released("left") or Input.is_action_just_released("right"):
+		Player.CayoteTimer.start()
 		print("Transitioning from wallslide to freefall")		
 		Transitioned.emit(self, "FreefallState")

@@ -18,8 +18,12 @@ func Update(_delta: float):
 func PhysicsUpdate(_delta: float):
 	if not Player.CayoteTimer.is_stopped():
 		if Input.is_action_just_pressed("jump"):
-			print("Transitioning from freefall to jump")
-			Transitioned.emit(self, "JumpingState")
+			if get_parent().PREVIOUS_STATE != get_parent().STATES["GroundState".to_lower()]:
+				print("Transitioning from freefall to jump cayote")
+				Transitioned.emit(self, "JumpingState")
+			elif get_parent().PREVIOUS_STATE != get_parent().STATES["WallSlideState".to_lower()]:
+				print("Transitioning from freefall to walljump cayote")
+				Transitioned.emit(self, "WallJumpState")
 		if Player.is_on_floor():
 			Player.CayoteTimer.stop()
 	else:
@@ -27,17 +31,15 @@ func PhysicsUpdate(_delta: float):
 			if get_parent().PREVIOUS_STATE != get_parent().STATES["DoubleJumpState".to_lower()] and not (Player.LeftBufferCheck.is_colliding() or Player.RightBufferCheck.is_colliding()):
 				print("Transitioning from freefall to doublejump")
 				Transitioned.emit(self, "DoubleJumpState")
-				print("YESWAY")
 			if Player.LeftBufferCheck.is_colliding() or Player.RightBufferCheck.is_colliding():
 				print("Transitioning from freefall to buffer")
 				Transitioned.emit(self, "BufferState")
-				print("NOWAY")
 				
 		elif Player.is_on_floor():
 			print("Transitioning from freefall to ground")
 			Transitioned.emit(self, "GroundState")
 			
-		elif Player.is_on_wall() and not Player.is_on_floor():
+		elif Player.is_on_wall() and (Input.is_action_pressed("left") or Input.is_action_pressed("right")):
 			print("Transitioning from freefall to wallslide")
 			Transitioned.emit(self, "WallSlideState")
 

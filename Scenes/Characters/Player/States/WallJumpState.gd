@@ -6,9 +6,9 @@ func Enter():
 	Player.TIME_ELAPSED = 0
 	Player.MOVE_ACCELARATION = 100
 	if Player.left_wall():
-		Player.velocity.x = 1000
+		Player.velocity.x = 700
 	elif Player.right_wall():
-		Player.velocity.x = -1000
+		Player.velocity.x = -700
 
 func Exit():	
 	Player.MOVE_ACCELARATION = 300
